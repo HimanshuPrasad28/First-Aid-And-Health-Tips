@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz & Assessment - First Aid Essentials</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-heartbeat"></i> First Aid Essentials</h1>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="guides.html">First Aid Guides</a></li>
+                    <li><a href="resources.html">Health Resources</a></li>
+                    <li><a href="training.html">Training</a></li>
+                    <li><a href="quiz.html" class="active">Quiz</a></li>
+                    <li><a href="locator.html">Emergency Locator</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" placeholder="Search..." class="search-input">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero animate-fade-in">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Test Your First Aid Knowledge</h1>
+                <p>Challenge yourself with our interactive quizzes and assessments to improve your emergency response skills.</p>
+                <a href="#quizzes" class="btn btn-primary">Start a Quiz</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="quizzes" class="section">
+        <div class="container">
+            <h2 class="section-title">Available Quizzes</h2>
+            <p class="section-description">Select a quiz category to test your knowledge and skills.</p>
+            
+            <div class="quiz-categories">
+                <div class="quiz-category animate-slide-left" id="basicQuiz">
+                    <div class="quiz-icon">
+                        <i class="fas fa-notes-medical"></i>
+                    </div>
+                    <h3>Basic First Aid</h3>
+                    <p>10 questions • 10 minutes</p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Beginner</span>
+                        <div class="difficulty-meter">
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary quiz-start-btn">Start Quiz</button>
+                </div>
+                
+                <div class="quiz-category animate-fade-in" id="cprQuiz">
+                    <div class="quiz-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>CPR & Cardiac Emergencies</h3>
+                    <p>15 questions • 15 minutes</p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Intermediate</span>
+                        <div class="difficulty-meter">
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary quiz-start-btn">Start Quiz</button>
+                </div>
+                
+                <div class="quiz-category animate-slide-right" id="emergencyQuiz">
+                    <div class="quiz-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Emergency Response</h3>
+                    <p>20 questions • 20 minutes</p>
+                    <div class="difficulty">
+                        <span class="difficulty-label">Advanced</span>
+                        <div class="difficulty-meter">
+                            <span class="active"></span>
+                            <span class="active"></span>
+                            <span class="active"></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary quiz-start-btn">Start Quiz</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz-container" class="section quiz-section" style="display: none;">
+        <div class="container">
+            <div class="quiz-header">
+                <h2 id="quiz-title">Quiz Title</h2>
+                <div class="quiz-progress">
+                    <span id="current-question">1</span>/<span id="total-questions">10</span>
+                </div>
+                <div class="quiz-timer">
+                    <i class="fas fa-clock"></i> <span id="timer">10:00</span>
+                </div>
+            </div>
+            
+            <div class="quiz-content">
+                <div class="question-container">
+                    <h3 id="question-text">Question text will appear here</h3>
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button id="prev-btn" class="btn btn-secondary" disabled>Previous</button>
+                    <button id="next-btn" class="btn btn-primary">Next</button>
+                    <button id="submit-btn" class="btn btn-primary" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="results-container" class="section results-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Quiz Results</h2>
+            <div class="results-summary animate-fade-in">
+                <div class="result-score">
+                    <div class="score-circle">
+                        <span id="score-percentage">0%</span>
+                    </div>
+                    <p>Your Score</p>
+                </div>
+                <div class="result-details">
+                    <div class="result-item">
+                        <span class="result-label">Correct Answers:</span>
+                        <span class="result-value" id="correct-answers">0/10</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Time Taken:</span>
+                        <span class="result-value" id="time-taken">0:00</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Performance:</span>
+                        <span class="result-value" id="performance-level">Needs Improvement</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="results-actions">
+                <button id="review-btn" class="btn btn-secondary">Review Answers</button>
+                <button id="retry-btn" class="btn btn-primary">Retry Quiz</button>
+                <button id="new-quiz-btn" class="btn btn-primary">Try Another Quiz</button>
+            </div>
+            
+            <div id="answers-review" class="answers-review" style="display: none;">
+                <h3>Review Your Answers</h3>
+                <div id="review-container">
+                    <!-- Review content will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content animate-fade-in">
+                <h2>Ready to Learn More?</h2>
+                <p>Enhance your knowledge with our comprehensive training courses and certification programs.</p>
+                <a href="training.html" class="btn btn-primary">View Training Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><i class="fas fa-heartbeat"></i> First Aid Essentials</h2>
+                    <p>Learn life-saving skills today.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="guides.html">First Aid Guides</a></li>
+                        <li><a href="resources.html">Health Resources</a></li>
+                        <li><a href="training.html">Training</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="locator.html">Emergency Locator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Health Street, Medical City</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@firstaidessentials.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 First Aid Essentials. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Quiz functionality will be added here
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizCategories = document.querySelectorAll('.quiz-category');
+            const quizContainer = document.getElementById('quiz-container');
+            const resultsContainer = document.getElementById('results-container');
+            const startButtons = document.querySelectorAll('.quiz-start-btn');
+            
+            // Sample quiz data
+            const quizzes = {
+                basicQuiz: {
+                    title: "Basic First Aid Quiz",
+                    questions: [
+                        {
+                            question: "What is the first step in any emergency situation?",
+                            options: [
+                                "Call for help",
+                                "Check for danger",
+                                "Start CPR",
+                                "Check for response"
+                            ],
+                            answer: 1
+                        },
+                        {
+                            question: "What is the correct ratio of chest compressions to rescue breaths in adult CPR?",
+                            options: [
+                                "15:2",
+                                "30:2",
+                                "5:1",
+                                "100:1"
+                            ],
+                            answer: 1
+                        }
+                        // More questions would be added here
+                    ]
+                }
+                // More quizzes would be defined here
+            };
+            
+            // Add event listeners to start buttons
+            startButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const quizCategory = this.parentElement.id;
+                    startQuiz(quizCategory);
+                });
+            });
+            
+            function startQuiz(quizId) {
+                document.getElementById('quizzes').style.display = 'none';
+                quizContainer.style.display = 'block';
+                
+                // Set up quiz based on selected category
+                const quiz = quizzes[quizId];
+                document.getElementById('quiz-title').textContent = quiz.title;
+                document.getElementById('total-questions').textContent = quiz.questions.length;
+                
+                // Load first question
+                loadQuestion(0, quiz);
+            }
+            
+            function loadQuestion(index, quiz) {
+                const question = quiz.questions[index];
+                document.getElementById('question-text').textContent = question.question;
+                document.getElementById('current-question').textContent = index + 1;
+                
+                const optionsContainer = document.getElementById('options-container');
+                optionsContainer.innerHTML = '';
+                
+                question.options.forEach((option, i) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'option';
+                    optionElement.innerHTML = `
+                        <input type="radio" id="option${i}" name="answer" value="${i}">
+                        <label for="option${i}">${option}</label>
+                    `;
+                    optionsContainer.appendChild(optionElement);
+                });
+            }
+            
+            // More quiz functionality would be implemented here
+        });
+    </script>
+</body>
+</html>
